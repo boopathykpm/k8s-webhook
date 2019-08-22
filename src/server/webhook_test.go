@@ -10,6 +10,7 @@ import (
 	"path"
 	"testing"
 
+	"github.com/kinbiko/jsonassert"
 	"github.com/stretchr/testify/assert"
 
 	"k8s.io/api/admission/v1beta1"
@@ -172,7 +173,9 @@ func TestServeHTTP(t *testing.T) {
 				return
 			}
 
-			assert.Equal(t, c.expectedAdmissionReview, gotReview)
+			ja := jsonassert.New(t)
+			// find some sort of payload
+			ja.Assertf(string(gotReview.Response.Patch), string(c.expectedAdmissionReview.Response.Patch))
 		})
 	}
 

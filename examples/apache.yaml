@@ -13,7 +13,7 @@ spec:
     metadata:
       annotations:
         newrelic.com/integrations-sidecar-configmap: "apache-newrelic-integrations-config"
-        newrelic.com/integrations-sidecar-imagename: "newrelic/k8s-nri-apache"
+        newrelic.com/integrations-sidecar-imagename: "nri-apache-connect:staging"
       labels:
         app: apache
     spec:
